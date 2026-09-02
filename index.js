@@ -26,7 +26,9 @@ app.get("/api/products", async (req, res) => {
   try {
     const pool = await sql.connect(config);
 
-    const result = await pool.request().query("SELECT TOP 1* FROM dbo.product");
+    const result = await pool
+      .request()
+      .query("SELECT TOP 5 * FROM dbo.product");
 
     res.json(result.recordset);
   } catch (err) {
